@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>Insert title here</title>
+</head>
+<body>
+
+<p th:text=${mykey}></p>
+<div id="main"></div>
+
+<script th:inline="javascript">
+
+/*<![CDATA[*/
+  var myval = /*[[${mykey}]]*/ "Test";
+  var listVals = /*[[${myList}]]*/ "Test1";
+/*]]>*/
+ var mainDiv = document.getElementById("main");
+ for(i=0; i<listVals.length; i++){
+	 //create text node
+	 var t = document.createTextNode(listVals[i].name+' '+listVals[i].age);
+	 //create para node
+	 var p = document.createElement("P");
+	 //attach text to para
+	 p.appendChild(t);
+	 //attach para to div
+	 mainDiv.appendChild(p);
+ }
+ 
+
+</script>
+</body>
+</html>
